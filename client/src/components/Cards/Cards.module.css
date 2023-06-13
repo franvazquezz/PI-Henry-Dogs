@@ -1,0 +1,14 @@
+.container{
+    display: inline-flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.cont{
+    background: url(https://img.freepik.com/premium-vector/simple-minimalist-cartoon-cute-dog-logo_68410-146.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    min-height: 100vh;
+    object-fit: cover;
+    background-attachment: fixed;
+    justify-content: space-around;
+}
