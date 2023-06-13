@@ -9,7 +9,6 @@ import {Route, Routes, useLocation} from 'react-router-dom';
 
 
 function App() {
-  const [dogs, setDogs] = useState([]);
   const {pathname} = useLocation();
   return (
     <div className="App">
