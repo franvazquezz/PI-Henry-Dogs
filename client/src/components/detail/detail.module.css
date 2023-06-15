@@ -1,3 +1,31 @@
+.main{
+    margin-top: 70px;
+    display: inline-flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.carta{
+    background-color: rgba(47, 79, 79, 0.651);
+    min-width: 240px;
+    min-height: 350px;
+    justify-content: center;
+    border: 3px solid darkslategray;
+    border-radius: 15px;
+    padding: 10px;
+}
 .status{
     object-fit: contain;
+}
+.img{
+    width: 35vw;
+    aspect-ratio: 3/2;
+    margin-top: 50px;
+    border: 0px;
+    border-radius: 15px;
+}
+
+.back{
+    background-color:royalblue;
+    box-shadow:dodgerblue 5px 5px 5px 5px;
+    border-radius: 15px;
 }

@@ -20,7 +20,7 @@ const reducer = (state = initialState, action) => {
         case 'GET_BY_NAME':
             return {
                 ...state,
-                dogs: action.payload
+                details: action.payload
             }
         case 'GET_BY_ID':
             return{

@@ -22,10 +22,10 @@ export const getDogById = (id) => {
    }
 }
 
-export const getDogByName = (dispatch) => {
+export const getDogByName = (name) => {
    try {
-      return async () => {
-         const {data} = await axios.get('http://localhost:3001/dogs/?name')
+      return async (dispatch) => {
+         const {data} = await axios.get(`http://localhost:3001/dogs?name=${name}`)
          return dispatch({type: 'GET_BY_NAME', payload: data})
       }
    } catch (error) {
@@ -53,6 +53,10 @@ export const postDogs = (userData) => {
    } catch (error) {
       console.log(error);
    }
+}
+
+export const removeDetail = () => {
+   return {type: 'REMOVE_DETAILS'}
 }
 
 // export const filterCards = (gender) => {

@@ -1,15 +1,19 @@
 import style from './detail.module.css'
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { getDogById } from '../../redux/actions';
+import { useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { removeDetail } from '../../redux/actions';
 
 const Detail = () =>{
+    const dispatch = useDispatch()
     const {id} = useParams();
     const [detail, setDetail] = useState({});
     const url = `http://localhost:3001/dogs/${id}`;
 
+    const detailsEmpty = () => {
+       dispatch(removeDetail())
+    }
     useEffect(()=> {
         axios.get(url)
         .then(({data}) => {
@@ -17,15 +21,23 @@ const Detail = () =>{
         });
         return setDetail({});
     }, [id]);
-
     return (
-        <div>
-            <h1>Detail</h1>
-            <h1 className={style.name}> {detail.name && detail.name}</h1>
-            <h3 className={style.status}> Años de vida: {detail.life_span && detail.life_span}</h3>
-            <h3 className={style.status}> Peso: {detail.weight && detail.weight}</h3>
-            <h3 className={style.status}> Altura: {detail.height && detail.height}</h3>
-            <h3 className={style.status}> Temperamentos: {detail.temperament && detail.temperament}</h3>
+        <div className={style.main}>
+            <div className={style.carta}>
+                <Link to={`/dogs`}>
+                <button className={style.back} onClick={detailsEmpty}>Back</button>
+                </Link>
+                <br></br>
+                <img className={style.img}src={detail[0]?.img && detail[0]?.img}/>
+                <h1 className={style.name}> {detail[0]?.name && detail[0]?.name}</h1>
+                <h3 className={style.status}> Life span: {detail[0]?.life_span && detail[0]?.life_span}</h3>
+                <h3 className={style.status}> Weight: {detail[0]?.weight_min && detail[0]?.weight_min} - {detail[0]?.weight_max && detail[0]?.weight_max} kg</h3>
+                <h3 className={style.status}> Height: {detail[0]?.height_min && detail[0]?.height_min} - {detail[0]?.height_max && detail[0]?.height_max} cm</h3>
+                <h3 className={style.status}> Temperament: {detail[0]?.temperaments && detail[0]?.temperaments}</h3>
+                <Link to={`/dogs`}>
+                <button className={style.back} onClick={detailsEmpty}>Back</button>
+                </Link>
+            </div>
         </div>
     );
 };

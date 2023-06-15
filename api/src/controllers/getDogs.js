@@ -1,4 +1,3 @@
-const {Dog, Temperament} = require('../db');
 const {getAll} = require('./functions')
 
 

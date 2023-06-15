@@ -1,19 +1,27 @@
+import { useDispatch } from 'react-redux';
 import style from './SearchBar.module.css';
 import { useState } from 'react';
+import { getDogByName } from '../../redux/actions'
 
-const SearchBar = ({onSearch}) => {
-  const [name, setName] = useState('');
+const SearchBar = () => {
+   const dispatch = useDispatch()
+   const [name, setName] = useState('');
 
-  const handleChange = (event) => {
+   const handleChange = (event) => {
      setName(event.target.value)
-  }
+   }
   
-  return (
-     <div  className={style.search}>
-        <input placeholder='Insertar Raza' className={style.input}type='search' onChange={handleChange} value={name}/>
-        <button className={style.glowonhover} onClick={() =>{onSearch(name)}}>Buscar</button>
-     </div>
-  );
+   const onSearch = (name) => {
+      console.log('hola', name);
+      dispatch(getDogByName(name))
+   }
+
+   return (
+      <div  className={style.search}>
+         <input placeholder='Insert Breed' className={style.input}type='search' onChange={handleChange} value={name}/>
+         <button className={style.glowonhover} onClick={() =>{onSearch(name)}}>Buscar</button>
+      </div>
+   );
 }
 
 export default SearchBar;

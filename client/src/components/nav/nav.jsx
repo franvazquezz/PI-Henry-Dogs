@@ -1,6 +1,7 @@
 import SearchBar from "../searchBar/searchBar.jsx";
 import style from "./Nav.module.css"
 import {Link, NavLink} from 'react-router-dom'
+import patita from '../../../assets/patita.png'
 
 const Nav = () => {
     return (
@@ -16,7 +17,7 @@ const Nav = () => {
             <button className={style.glowonhover}>LogOut</button>
             </Link>
             <Link to='/dogs'>
-            <img className={style.img} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhbSBkoYZskf49zPotG3_I3JFRflme62TO5A" alt=""/>
+            <img className={style.img} src={patita} alt=""/>
             </Link>
             </div>
     )

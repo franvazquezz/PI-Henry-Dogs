@@ -13,6 +13,7 @@ const getTemperaments = async (req, res) => {
         tempArray = tempArray.map(ele=> ele.trim());
         let sinRepe = [...new Set(tempArray)];
         sinRepe.sort();
+        sinRepe.shift();
         let tempsDB = (sinRepe) => {
             for (let i = 0; i < sinRepe.length; i++) {
                 Temperament.findOrCreate({where: {name: sinRepe[i]}})

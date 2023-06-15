@@ -1,10 +1,9 @@
 import './App.css';
 import Landing from './components/landing/landing.jsx';
-// import Form from './components/form/form.jsx'
-import Detail from './components/form/form.jsx'
+import Form from './components/form/form.jsx'
+import Detail from './components/detail/detail.jsx'
 import Nav from './components/nav/nav.jsx'
 import Cards from './components/Cards/Cards.jsx';
-import { useState } from 'react';
 import {Route, Routes, useLocation} from 'react-router-dom';
 
 
@@ -14,10 +13,11 @@ function App() {
     <div className="App">
       {pathname !== '/' && <Nav/>}
       <Routes>
-        <Route path='/' element = {<Landing/>}/>
-        <Route path='/dogs' element = {<Cards/>}/>
-        {/* <Route path='/create' element = {<Form/>}/> */}
-        <Route path='/dogs/:id' element = {<Detail/>}/>
+        <Route exact path='/' element = {<Landing/>}/>
+        <Route exact path='/dogs' element = {<Cards/>}/>
+        <Route exact path='/create' element = {<Form/>}/>
+        <Route exact path='/dogs?name=' element = {<Detail/>}/>
+        <Route exact path='/dogs/:id' element = {<Detail/>}/>
       </Routes>
     </div>
   );
