@@ -8,7 +8,7 @@ import style from './About.module.css';
 const About = () => {
     return (
         <div className={style.fondo}>
-            <div>
+            <div className={style.info}>
             <h1 className={style.pancho} >About</h1>
             <img className={style.foto} src={pancho} alt=''></img>
             <h2 className={style.text}>
@@ -18,8 +18,8 @@ const About = () => {
                 cohorte 38a</p> 
             </h2>
             </div>
-            <div>
-            <Card
+            <div className={style.cards}>
+            <Card className={style.card}
                id = {1}
                name = {'Maylo'}
                height_min = {15}
@@ -30,7 +30,7 @@ const About = () => {
                img = {maylo}
                temperaments = {['Active', 'Lively']}
             />
-            <Card
+            <Card className={style.card}
                id = {2}
                name = {'Luna'}
                height_min = {20}
@@ -41,7 +41,7 @@ const About = () => {
                img = {luna}
                temperaments = {['Active', 'Lively']}
             />
-            <Card
+            <Card className={style.card}
                id = {2}
                name = {'Chueco'}
                height_min = {10}

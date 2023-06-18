@@ -1,6 +1,9 @@
 .fondo{
     margin-top: 60px;
-    display: flex;
+    min-height: 100vh;
+    object-fit: cover;
+    justify-content: space-around;
+
 }
 .pancho{
     margin: 5px;
@@ -10,6 +13,11 @@
     color: white;
     font-size: 2em;
     text-align: center;
+}
+.info{
+    justify-content:center;
+    display: flex;
+    align-items: center;
 }
 .foto{
     width: 20%;
@@ -43,4 +51,9 @@
     border-radius: 100%;
     width: 100px;
     height: 100px;
+}
+.cards{
+    display: flex;
+    justify-content: space-around;
+    padding: 0%;
 }

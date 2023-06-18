@@ -1,4 +1,3 @@
-import { orderCardsName } from "./actions"
 
 const initialState = {
     allDogs: [],
