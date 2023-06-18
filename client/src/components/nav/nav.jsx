@@ -10,11 +10,14 @@ const Nav = () => {
             <button className={style.glowonhover}>Home</button>
             </Link>
             <NavLink to='/create'>
-            <button className={style.glowonhover}>Agregar Raza</button>
+            <button className={style.glowonhover}>Add Breed</button>
             </NavLink>
             <SearchBar/>
+            <Link to='/about'>
+            <button className={style.glowonhover}>About</button>
+            </Link>
             <Link to='/'>
-            <button className={style.glowonhover}>LogOut</button>
+            <button className={style.glowonhover}>Log Out</button>
             </Link>
             <Link to='/dogs'>
             <img className={style.img} src={patita} alt=""/>

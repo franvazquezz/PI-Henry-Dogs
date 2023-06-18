@@ -8,7 +8,7 @@ const getAllDogs = async (req, res) => {
 
         if(name) {
             const raza = allDogs.filter(ele => ele.name.toLowerCase().includes(name.toLowerCase()))
-            raza.length ? res.status(200).send(raza) : res.status(404).send('No existe tal raza')
+            raza.length ? res.status(200).send(raza) : res.status(404).send('There is no such breed')
         } else {
             res.status(200).send(allDogs)
         }
@@ -22,7 +22,7 @@ const getById = async (req, res)=> {
         let allDogs = await getAll()
         if(id){
             let idPerro = allDogs.filter(ele => ele.id == id)
-            idPerro.length ? res.status(200).send(idPerro) : res.status(404).send('Raza no encontrada')
+            idPerro.length ? res.status(200).send(idPerro) : res.status(404).send('Breed not found')
         }
     } catch (error) {
         res.status(500).send(error)

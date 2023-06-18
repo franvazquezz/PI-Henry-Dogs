@@ -3,8 +3,8 @@ const {Dog, Temperament} = require('../db');
 
 const postDogs = async (req, res) =>{
     try {
-        const {name, height_min, height_max, weight_min, weight_max, img, life_span, temperaments} = req.body
-        if(!name || !height_min || !height_max || !weight_min || !weight_max)return res.status(400).send('Faltan datos');
+        const {name, height_min, height_max, weight_min, weight_max, img, life_span, temperaments, createdInDb} = req.body
+        if(!name || !height_min || !height_max || !weight_min || !weight_max || !life_span)return res.status(400).send('Missing data');
         console.log(temperaments);
         let tempArray = temperaments
         tempArray = tempArray.map(ele=> ele.trim());
@@ -22,15 +22,16 @@ const postDogs = async (req, res) =>{
             height_max,
             life_span,
             img,
+            createdInDb,
         }
 
         const newDogDB = await Dog.create(newDogRaw)
         console.log('matchedTemps', matchedTemps);
         console.log('perro', newDogDB);
         await newDogDB.addTemperaments(matchedTemps.map((temp)=> temp.id))
-        res.status(200).send(`Se ha creado la raza ${name} con exito`)
+        res.status(200).send(`Breed ${name} has been created successfully`)
     } catch (error) {
-        res.status(500).send('Posteo fallido')
+        res.status(500).send('Failed post')
     }
 }
 

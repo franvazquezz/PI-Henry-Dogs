@@ -1,5 +1,8 @@
+import { orderCardsName } from "./actions"
+
 const initialState = {
     allDogs: [],
+    allDogsFiltered: [],
     allTemperaments: [],
     details: [],
 }
@@ -9,7 +12,8 @@ const reducer = (state = initialState, action) => {
         case 'GET_DOGS':
             return {
                 ...state, 
-                allDogs: action.payload
+                allDogs: action.payload,
+                allDogsFiltered: action.payload
             }
         case 'GET_TEMPERAMENTS':
             return {
@@ -32,14 +36,50 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 details: []
             }
-        // case 'FILTER':
-        //     const allDogsFiltered = state.allDogs.filter((char)=> char.gender === action.payload)
-        //     return {...state, allDogs: allDogsFiltered}
-        // case 'ORDER':
-        //     const allDogsOrdered = [...state.allDogs]
-        //     return { ...state, allDogs: action.payload === "A" ? allDogsOrdered.sort((a, b) => a.id - b.id) :  allDogsOrdered.sort((a, b) => b.id - a.id)}
+        case 'FILTER':
+            state.allDogs = state.allDogsFiltered
+            let filtered = []
+            if(action.payload === 'Any') return {...state}
+            state.allDogs.forEach(perro => {
+                if(perro.createdInDb){
+                    if(perro.temperaments?.find(temp => temp.name === action.payload)){
+                        filtered.push(perro)
+                    }
+                }
+                if(perro.temperaments?.includes(action.payload)){
+                    filtered.push(perro)
+                }
+            })
+            return {
+                ...state,
+                allDogs: filtered
+            }
+        case'FILTER_ORIGIN':
+            state.allDogs = state.allDogsFiltered;
+            let orderOrigin = state.allDogs
+            const origen = () => {
+                if(action.payload === 'Any' ) {
+                    return orderOrigin
+                } else if(action.payload === 'DataBase') {
+                    return orderOrigin.filter(dog => dog.createdInDb)
+                } else if(action.payload === 'Api') {
+                    return orderOrigin.filter(dog => !dog.createdInDb)
+                } else {
+                    return orderOrigin
+                }
+            }
+            return {
+                ...state, 
+                allDogs: origen()
+            }
+        case 'ORDER_BY_NAME':
+            const allDogsOrderedName = [...state.allDogs]
+            return { ...state, allDogs: action.payload === "A" ? allDogsOrderedName.sort((a, b) => a.id- b.id) :  allDogsOrderedName.sort((a, b) => b.id - a.id)}
+        case 'ORDER_BY_WEIGHT':
+            const allDogsOrderedWeight = [...state.allDogs]
+            return { ...state, allDogs: action.payload === "A" ? allDogsOrderedWeight.sort((a, b) => a.weight_min - b.weight_min) :  allDogsOrderedWeight.sort((a, b) => b.weight_min - a.weight_min)}
         default:
-            return  state
+            return state
     }
 }
  export default reducer

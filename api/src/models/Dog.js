@@ -1,4 +1,4 @@
-const { DataTypes } = require('sequelize');
+const { DataTypes, BOOLEAN } = require('sequelize');
 
 
 module.exports = (sequelize) => {
@@ -35,6 +35,10 @@ module.exports = (sequelize) => {
         img: {
             type: DataTypes.STRING,
         },
+        createdInDb: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: true,
+        }
       },
       {timestamps: false}
       );

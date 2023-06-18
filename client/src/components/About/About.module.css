@@ -1,0 +1,46 @@
+.fondo{
+    margin-top: 60px;
+    display: flex;
+}
+.pancho{
+    margin: 5px;
+    width: 25%;
+    height: 20%;
+    left: 37%;
+    color: white;
+    font-size: 2em;
+    text-align: center;
+}
+.foto{
+    width: 20%;
+    border-radius: 100%;
+    border: outset 15px rgba(0, 0, 0, 0.349);
+    margin-top: 4%;
+    animation: rotate negro 5s;
+}
+@keyframes negro {
+    0%{transform: translateY(10%);}
+}
+@keyframes rotate {
+    form {}
+    to {transform: rotate(1080deg);}
+}
+.text{
+    color: white;
+    text-align: center;
+    font-size: x-large;
+    background-color: rgb(240, 248, 255, 0.45);
+    border-radius: 10px;
+    padding: 5px;
+    margin: 5px;
+    width: 30%;
+    height: 30%;
+    left: 35%;
+}
+.img{
+    top: 0%;
+    left: 0%;
+    border-radius: 100%;
+    width: 100px;
+    height: 100px;
+}

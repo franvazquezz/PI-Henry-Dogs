@@ -16,11 +16,13 @@ export const getDogById = (id) => {
       return async (dispatch)=>{
          const {data} = await axios.get(`http://localhost:3001/dogs/${id}`)
          dispatch({type: 'GET_BY_ID', payload: data})
+         console.log('hola');
       }
    } catch (error) {
-      
+      console.log(error);
    }
 }
+
 
 export const getDogByName = (name) => {
    try {
@@ -54,18 +56,25 @@ export const postDogs = (userData) => {
       console.log(error);
    }
 }
-
-export const removeDetail = () => {
-   return {type: 'REMOVE_DETAILS'}
+export const removeDetails = () => {
+   return{ 
+      type:'REMOVE_DETAILS',
+      payload: 'nada'
+   }
 }
 
-// export const filterCards = (gender) => {
-//     return {type: 'FILTER', payload: gender}
-// }
+export const filterByOrigin = (origin) => {
+   return  {type: 'FILTER_ORIGIN', payload: origin}
+}
 
-// export const orderCards = (orden) => {
-//     return {type: 'ORDER', payload: orden}
-// }
-// export const showAllCards = (nofilter) => {
-//    return {type: 'SHOW_ALL', payload: nofilter}
-// }
+export const filterCards = (temp) => {
+    return {type: 'FILTER', payload: temp}
+}
+
+export const orderCardsName = (orden) => {
+    return {type: 'ORDER_BY_NAME', payload: orden}
+}
+
+export const orderCardsWeight = (orden) => {
+   return {type: 'ORDER_BY_WEIGHT', payload: orden}
+}

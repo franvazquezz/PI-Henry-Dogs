@@ -19,7 +19,7 @@ const SearchBar = () => {
    return (
       <div  className={style.search}>
          <input placeholder='Insert Breed' className={style.input}type='search' onChange={handleChange} value={name}/>
-         <button className={style.glowonhover} onClick={() =>{onSearch(name)}}>Buscar</button>
+         <button className={style.glowonhover} onClick={() =>{onSearch(name)}}>🔎</button>
       </div>
    );
 }
