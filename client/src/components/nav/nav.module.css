@@ -94,3 +94,6 @@
     mix-blend-mode:color;
     background-color: rgb(15, 68, 20);
 }
+.img:hover{
+    transform: scale(1.1) rotate(-10deg);
+}

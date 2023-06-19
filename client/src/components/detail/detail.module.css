@@ -25,7 +25,19 @@
 }
 
 .back{
-    background-color:royalblue;
-    box-shadow:dodgerblue 5px 5px 5px 5px;
-    border-radius: 15px;
+    display: inline-block;
+    outline: 0;
+    cursor: pointer;
+    border-radius: 6px;
+    border: 2px solid #ff4742;
+    color: #fff;
+    background-color: #d83d38;
+    padding: 0px;
+    font-weight: 800;
+    font-size: 16px;
+    height: 32px;
+}
+.back:hover{
+    background: 0 0;
+    color: #ff4742;
 }

@@ -2,6 +2,7 @@
 const initialState = {
     allDogs: [],
     allDogsFiltered: [],
+    dogFinder: [],
     allTemperaments: [],
     details: [],
 }
@@ -19,12 +20,20 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 allTemperaments: action.payload}
         case 'POST_DOGS':
-            return {allDogs: [...allDogs, action.payload]}
+            return {
+                ...state,
+                allDogs: [...allDogs, action.payload]
+            }
         case 'GET_BY_NAME':
             return {
                 ...state,
-                details: action.payload
+                dogFinder:[...action.payload]
             }
+            case 'REMOVE_FINDER':
+                return{
+                    ...state,
+                    dogFinder: []
+                }
         case 'GET_BY_ID':
             return{
                 ...state,
@@ -73,10 +82,18 @@ const reducer = (state = initialState, action) => {
             }
         case 'ORDER_BY_NAME':
             const allDogsOrderedName = [...state.allDogs]
-            return { ...state, allDogs: action.payload === "A" ? allDogsOrderedName.sort((a, b) => a.id- b.id) :  allDogsOrderedName.sort((a, b) => b.id - a.id)}
+            return {
+                 ...state, allDogs: action.payload === "A" ? 
+                 allDogsOrderedName.sort((a, b) => a.id- b.id) :  
+                 allDogsOrderedName.sort((a, b) => b.id - a.id)
+                }
         case 'ORDER_BY_WEIGHT':
             const allDogsOrderedWeight = [...state.allDogs]
-            return { ...state, allDogs: action.payload === "A" ? allDogsOrderedWeight.sort((a, b) => a.weight_min - b.weight_min) :  allDogsOrderedWeight.sort((a, b) => b.weight_min - a.weight_min)}
+            return { 
+                ...state, allDogs: action.payload === "A" ?
+            allDogsOrderedWeight.sort((a, b) => a.weight_min - b.weight_min) :
+            allDogsOrderedWeight.sort((a, b) => b.weight_min - a.weight_min)
+        }
         default:
             return state
     }

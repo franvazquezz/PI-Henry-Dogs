@@ -1,4 +1,4 @@
-import { getTemperaments, postDogs } from "../../redux/actions";
+import { getTemperaments, getDogs, postDogs } from "../../redux/actions";
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import style from './form.module.css'
@@ -69,8 +69,9 @@ const Form = () =>{
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        dispatch(postDogs(userData))
-        alert(`The new breed ${userData.name} has been created successfully`)
+        dispatch(postDogs(userData));
+        dispatch(getDogs())
+        alert(`The new breed ${userData.name} has been created successfully`);
     }
     return (
         <div className={style.todo}>
@@ -78,26 +79,26 @@ const Form = () =>{
             <form  onSubmit={handleSubmit}>
                 <div className={style.izq}>
                     <label htmlFor="name">Breed's name </label>
-                    <input placeholder='e.g. Caniche Toy' type="text" required={true}onChange={e => handleChange(e)} value={userData.name} name="name"/>
+                    <input className={style.input} placeholder='e.g. Caniche Toy' type="text" required={true}onChange={e => handleChange(e)} value={userData.name} name="name"/>
                     {errors.name && (<p>{errors.name}</p>)}
                 </div>
                 <div className={style.der}>
                     <label htmlFor="weight">Weight in kg </label>
-                    <input  name="weight_min" type="number" placeholder="Min weight" value={userData.weight_min} autoComplete="off" required={true} onChange={e => handleChange(e)}/>
-                    <input  name="weight_max" type="number" placeholder="Max weight" value={userData.weight_max} autoComplete="off" required={true} onChange={e => handleChange(e)}/>
+                    <input className={style.input} name="weight_min" type="number" placeholder="Min weight" value={userData.weight_min} autoComplete="off" required={true} onChange={e => handleChange(e)}/>
+                    <input className={style.input} name="weight_max" type="number" placeholder="Max weight" value={userData.weight_max} autoComplete="off" required={true} onChange={e => handleChange(e)}/>
                     {errors.weight_min && (<p>{errors.weight_min}</p>)}
                     {errors.weight_max && (<p>{errors.weight_max}</p>)}
                 </div>
                 <div className={style.der}>
                     <label htmlFor="height">Height in cm </label>
-                    <input  name="height_min" type="number" placeholder="Min height" value={userData.height_min} autoComplete="off" required={true} onChange={e => handleChange(e)}/>
-                    <input  name="height_max" type="number" placeholder="Max height" value={userData.height_max} autoComplete="off" required={true} onChange={e => handleChange(e)}/>
+                    <input className={style.input} name="height_min" type="number" placeholder="Min height" value={userData.height_min} autoComplete="off" required={true} onChange={e => handleChange(e)}/>
+                    <input className={style.input} name="height_max" type="number" placeholder="Max height" value={userData.height_max} autoComplete="off" required={true} onChange={e => handleChange(e)}/>
                     {errors.height_min && (<p>{errors.height_min}</p>)}
                     {errors.height_max && (<p>{errors.height_max}</p>)}
                 </div>
                 <div className={style.izq}>
                     <label htmlFor="life_span">Life span in years </label>
-                    <input  name="life_span" type="number" placeholder="Life span" value={userData.life_span} autoComplete="off" required={true} onChange={e => handleChange(e)}/>
+                    <input className={style.input} name="life_span" type="number" placeholder="Life span" value={userData.life_span} autoComplete="off" required={true} onChange={e => handleChange(e)}/>
                     {errors.life_span && (<p>{errors.life_span}</p>)}
                 </div>
                 <div className={style.izq}>

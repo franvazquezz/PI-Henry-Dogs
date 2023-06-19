@@ -21,8 +21,24 @@
     border-radius: 20px;
     background-image: linear-gradient(144deg,#1b6319, #185734 50%,#155546);
 }
+.filter:hover{
+    border: 3px solid rgb(255, 255, 255);
+    background-image: linear-gradient(144deg,#2564b6, #1d3faf 50%,#1c13a1);
+}
 .back{
-    background-color:royalblue;
-    box-shadow:dodgerblue 5px 5px 5px 5px;
-    border-radius: 15px;
+    display: inline-block;
+    outline: 0;
+    cursor: pointer;
+    border-radius: 6px;
+    border: 2px solid #ff4742;
+    color: #fff;
+    background-color: #d83d38;
+    padding: 0px;
+    font-weight: 800;
+    font-size: 16px;
+    height: 32px;
+}
+.back:hover{
+    background: 0 0;
+    color: #ff4742;
 }

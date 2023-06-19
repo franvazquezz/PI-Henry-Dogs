@@ -6,9 +6,16 @@ import Nav from './components/nav/nav.jsx'
 import Home from './components/Home/Home.jsx';
 import About from './components/About/About.jsx'
 import {Route, Routes, useLocation} from 'react-router-dom';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { getDogs, getTemperaments } from './redux/actions';
 
 
 function App() {
+  const dispatch = useDispatch()
+  useEffect(()=> {
+  dispatch(getDogs()), dispatch(getTemperaments())
+  },[])
   const {pathname} = useLocation();
   return (
     <div className="App">

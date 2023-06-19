@@ -3,18 +3,26 @@ import Card from '../Card/Card';
 import { useState, useEffect } from 'react';
 import style from './Home.module.css'
 import { getDogs, getTemperaments, filterCards, filterByOrigin, orderCardsName, orderCardsWeight} from '../../redux/actions';
+import Pagination from '../Pagination/pagination';
 
 
 
 const Home = () =>{
    const [aux, setAux] = useState(false);
    const dispatch = useDispatch();
-   useEffect(()=>{dispatch(getDogs())}, [dispatch])
-   useEffect(()=>{dispatch(getTemperaments())}, [dispatch]);
-   const {allDogs, allTemperaments, details} = useSelector(state => state)
+   const {allTemperaments, allDogs, dogFinder} = useSelector(state => state);
+   const [currentPage, setCurrentPage] = useState(1);
+   const [postsPage, setPostsPage] = useState(8);
+   const lastPostIndex = currentPage * postsPage;
+   const firstPostIndex = lastPostIndex - postsPage;
+   let currentPosts = allDogs.slice(firstPostIndex, lastPostIndex);
+   useEffect(()=>{
+      currentPosts = allDogs.slice(firstPostIndex, lastPostIndex);
+      setCurrentPage(1);
+   }, [allDogs])
    const handleOrderName = (event)=>{
       dispatch(orderCardsName(event.target.value));
-      setAux(!aux)
+      setAux(!aux);
    }
    const handleOrderWeight = (event)=>{
       dispatch(orderCardsWeight(event.target.value));
@@ -39,12 +47,12 @@ const Home = () =>{
             <option value="Api">Api</option>
             <option value="DataBase">Created</option>
          </select>
-         <h4>Temprerament</h4>
+         <h4>Temperament</h4>
          <select onChange={handleFilter}>
             <option value="Any">Any</option>
-         {allTemperaments.map((item)=> {
+         {allTemperaments.map((item, index)=> {
             return (
-               <option value={item}>{item}</option>
+               <option key={index}value={item}>{item}</option>
             )
          })}
          </select>
@@ -65,10 +73,11 @@ const Home = () =>{
          </div>
       </div>
       <div className={style.container}>
-         {details.length ? details.map(({id, name, height_min, height_max, weight_min, weight_max, life_span, temperaments, img}) => {
+         {dogFinder.length > 0? dogFinder.map(({id, name, height_min, height_max, weight_min, weight_max, life_span, temperaments, img}) => {
             return (
                <div>
                <Card
+               key={id}
                id = {id}
                name = {name}
                height_min = {height_min}
@@ -81,9 +90,10 @@ const Home = () =>{
                />
                </div>
                )}) :
-         allDogs.map(({id, name, height_min, height_max, weight_min, weight_max, life_span, temperaments, img})=>{
+         currentPosts.map(({id, name, height_min, height_max, weight_min, weight_max, life_span, temperaments, img})=>{
             return (
                <Card 
+               key={id}
                id = {id}
                name = {name}
                height_min = {height_min}
@@ -98,6 +108,7 @@ const Home = () =>{
          })
       }
       </div>
+      <Pagination totalPosts={allDogs.length} setCurrentPage= {setCurrentPage} postsPage={postsPage}/>
    </div>
    )
 }

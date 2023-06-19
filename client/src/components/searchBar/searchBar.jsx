@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import style from './SearchBar.module.css';
 import { useState } from 'react';
-import { getDogByName, removeDetails } from '../../redux/actions'
+import { getDogByName, removeFinder } from '../../redux/actions'
 
 const SearchBar = () => {
    const dispatch = useDispatch()
@@ -13,11 +13,11 @@ const SearchBar = () => {
   
    const onSearch = (name) => {
       console.log('hola', name);
-      dispatch(getDogByName(name))
+      dispatch(getDogByName(name));
    }
 
    const handleRemove = () => {
-      return dispatch(removeDetails())
+      return dispatch(removeFinder())
   }
 
    return (

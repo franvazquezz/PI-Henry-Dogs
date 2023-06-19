@@ -34,7 +34,12 @@ export const getDogByName = (name) => {
       console.log(error);
    }
 }
-
+export const removeFinder =() => {
+   return{ 
+      type:'REMOVE_FINDER',
+      payload: 'nada'
+   }
+}
 export const getTemperaments = () => {
    try {
       return async (dispatch)=>{
