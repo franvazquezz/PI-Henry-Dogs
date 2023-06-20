@@ -87,13 +87,11 @@
     100% { background-position: 0 0; }
 }
 .img{
-    height: 30%;
-    width: 30%;
-    aspect-ratio: 3/2;
-    object-fit: contain;
-    mix-blend-mode:color;
-    background-color: rgb(15, 68, 20);
+    object-fit: cover;
+    mix-blend-mode: color-burn;
+    max-width: 300px;
+
 }
 .img:hover{
-    transform: scale(1.1) rotate(-10deg);
+    transform: scale(1.1) rotate(-6deg);
 }

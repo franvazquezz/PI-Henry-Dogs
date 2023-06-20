@@ -1,6 +1,6 @@
 const {getAll} = require('./functions')
 
-
+//traemos a todos los perros, y si hay un name en query, traemos los que tengan ese nombre, completo o parcial, si no hay name treamos todos. siempre usando a getAll de functions que es nuestro array de objetos.
 const getAllDogs = async (req, res) => {
     try {
         const {name} = req.query

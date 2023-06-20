@@ -71,39 +71,68 @@ const Form = () =>{
         event.preventDefault();
         dispatch(postDogs(userData));
         dispatch(getDogs())
+        setUserData({
+            name: '',
+            height_min: '',
+            height_max: '',
+            weight_min: '',
+            weight_max: '',
+            life_span: '',
+            temperaments: [],
+            img: '',
+            createdInDb: true,
+        })
         alert(`The new breed ${userData.name} has been created successfully`);
     }
     return (
         <div className={style.todo}>
             <h1>Create a new breed</h1>
-            <form  onSubmit={handleSubmit}>
+            <form className={style.form} onSubmit={handleSubmit}>
                 <div className={style.izq}>
-                    <label htmlFor="name">Breed's name </label>
+                    <h4>Name</h4>
+                    <label htmlFor="name"></label>
                     <input className={style.input} placeholder='e.g. Caniche Toy' type="text" required={true}onChange={e => handleChange(e)} value={userData.name} name="name"/>
-                    {errors.name && (<p>{errors.name}</p>)}
+                    {errors.name ? (<p>{errors.name}</p>) : (<br></br>)}
                 </div>
                 <div className={style.der}>
-                    <label htmlFor="weight">Weight in kg </label>
+                    <h4>Weight in kg</h4>
+                    <label htmlFor="weight"></label>
                     <input className={style.input} name="weight_min" type="number" placeholder="Min weight" value={userData.weight_min} autoComplete="off" required={true} onChange={e => handleChange(e)}/>
                     <input className={style.input} name="weight_max" type="number" placeholder="Max weight" value={userData.weight_max} autoComplete="off" required={true} onChange={e => handleChange(e)}/>
                     {errors.weight_min && (<p>{errors.weight_min}</p>)}
                     {errors.weight_max && (<p>{errors.weight_max}</p>)}
                 </div>
                 <div className={style.der}>
-                    <label htmlFor="height">Height in cm </label>
+                    <h4>Height in cm</h4>
+                    <label htmlFor="height"></label>
                     <input className={style.input} name="height_min" type="number" placeholder="Min height" value={userData.height_min} autoComplete="off" required={true} onChange={e => handleChange(e)}/>
                     <input className={style.input} name="height_max" type="number" placeholder="Max height" value={userData.height_max} autoComplete="off" required={true} onChange={e => handleChange(e)}/>
                     {errors.height_min && (<p>{errors.height_min}</p>)}
                     {errors.height_max && (<p>{errors.height_max}</p>)}
                 </div>
                 <div className={style.izq}>
-                    <label htmlFor="life_span">Life span in years </label>
+                    <h4>Life span in years</h4>
+                    <label htmlFor="life_span"></label>
                     <input className={style.input} name="life_span" type="number" placeholder="Life span" value={userData.life_span} autoComplete="off" required={true} onChange={e => handleChange(e)}/>
                     {errors.life_span && (<p>{errors.life_span}</p>)}
                 </div>
                 <div className={style.izq}>
-                    <label htmlFor="temperaments">Temperaments: </label>
-                    <select onChange={e => handlerTemps(e)}>
+                    <h4>Choose an image</h4>
+                    <img className={style.random}src="https://img.freepik.com/premium-vector/simple-minimalist-cartoon-cute-dog-logo_68410-146.jpg" alt=''/>
+                    <img className={style.random}src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRb4hZmwHc1nwzFI0ordY93atFok5Ls8n6glA" alt=""/>
+                    <img className={style.random}src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoSMS0h2LRWJ_xR6ik3sQ-pS7DwnMVizCbyw" alt=""/>
+                    <img className={style.random}src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSavCkgCVj2kOFj2vb0sUY5S_bW5MLAK-MiJXNF2dOZK9vL7twl8ECe0FyUkukiBuOZyGI" alt=""/>
+                </div>
+                <div className={style.checkboxdiv}>
+                    <input name="img" type="radio" value={"https://img.freepik.com/premium-vector/simple-minimalist-cartoon-cute-dog-logo_68410-146.jpg"} onClick={e => handleChange(e)}/>
+                    <input name="img" type="radio" value={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRb4hZmwHc1nwzFI0ordY93atFok5Ls8n6glA"} onChange={e => handleChange(e)}/>
+                    <input name="img" type="radio" value={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoSMS0h2LRWJ_xR6ik3sQ-pS7DwnMVizCbyw"} onChange={e => handleChange(e)}/>
+                    <input name="img" type="radio" value={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSavCkgCVj2kOFj2vb0sUY5S_bW5MLAK-MiJXNF2dOZK9vL7twl8ECe0FyUkukiBuOZyGI"} onChange={e => handleChange(e)}/>
+                </div>
+                <div className={style.izq}>
+                    <h4>Temperaments:</h4>
+                    <label htmlFor="temperaments"></label>
+                    <select className={style.select} onChange={e => handlerTemps(e)}>
                         {
                             allTemperaments?.map(item=>{
                                 return (
@@ -112,6 +141,7 @@ const Form = () =>{
                         })
                     }
                     </select>
+                    <div className={style.array}>
                     {
                         userData.temperaments?.map(item => {
                             return (<div key={item}>
@@ -121,7 +151,7 @@ const Form = () =>{
                         })
                         
                     }
-                    <p>{console.log(userData.temperaments)}</p>
+                    </div>
                     <p>{errors.temperaments && errors.temperaments}</p>
                 </div>
                 <div className={style.izq}>

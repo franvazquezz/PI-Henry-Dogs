@@ -14,7 +14,6 @@ const Detail = () =>{
     useEffect(()=>{
         dispatch(getDogById(id))
     }, [dispatch, id])
-    console.log(details);
     return (
         <div className={style.main}>
             <div className={style.carta}>

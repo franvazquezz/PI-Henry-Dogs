@@ -8,19 +8,19 @@ const getTemperaments = async (req, res) => {
         const {data} = await axios(`${URL}?api_key=${API_KEY}`);
         let tempsApi = [];
         data.forEach(dog => {tempsApi.push(dog.temperament)});
-        let string = tempsApi.toString();
-        let tempArray = string.split(',');
+        let tempArray = tempsApi.toString();
+        tempArray = tempArray.split(',');
         tempArray = tempArray.map(ele=> ele.trim());
-        let sinRepe = [...new Set(tempArray)];
-        sinRepe.sort();
-        sinRepe.shift();
-        let tempsDB = (sinRepe) => {
-            for (let i = 0; i < sinRepe.length; i++) {
-                Temperament.findOrCreate({where: {name: sinRepe[i]}})
+        tempArray = [...new Set(tempArray)];
+        tempArray.sort();
+        tempArray.shift();
+        const tempsDB = (tempArray) => {
+            for (let i = 0; i < tempArray.length; i++) {
+                Temperament.findOrCreate({where: {name: tempArray[i]}})
             }
         }
-        tempsDB(sinRepe)
-        sinRepe.length ? res.status(200).json(sinRepe) : Temperament ? res.status(200).json(Temperament) : Error.message;
+        tempsDB(tempArray)
+        tempArray.length ? res.status(200).json(tempArray) : Temperament ? res.status(200).json(Temperament) : Error.message;
     } catch (error) {
         res.status(500).json({error: error.message});
     }

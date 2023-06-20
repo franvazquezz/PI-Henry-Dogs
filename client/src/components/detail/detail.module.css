@@ -3,6 +3,7 @@
     display: inline-flex;
     justify-content: space-around;
     flex-wrap: wrap;
+    
 }
 .carta{
     background-color: rgba(47, 79, 79, 0.651);

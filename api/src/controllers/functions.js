@@ -1,7 +1,7 @@
 const axios = require("axios")
 const {Dog, Temperament} = require("../db")
 const {API_KEY} = process.env
-
+//traemos todos las razas que vienen de la api
 const getApi = async () => {
     const url = await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`)
     const api = await url.data.map(ele => {
@@ -19,7 +19,7 @@ const getApi = async () => {
     })
     return api
 }
-
+//treamos las que vienen de la db
 const getDb = async () => {
     return await Dog.findAll({
         include: {
@@ -31,7 +31,7 @@ const getDb = async () => {
         }
     })
 }
-
+//y las concatenamos
 const getAll = async () => {
     const apiInfo = await getApi()
     const dbInfo = await getDb()

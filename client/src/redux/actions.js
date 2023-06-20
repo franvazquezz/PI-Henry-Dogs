@@ -12,26 +12,30 @@ export const getDogs = () => {
 }
 
 export const getDogById = (id) => {
-   try {
-      return async (dispatch)=>{
+   return async (dispatch)=>{
+      try {
          const {data} = await axios.get(`http://localhost:3001/dogs/${id}`)
          dispatch({type: 'GET_BY_ID', payload: data})
-         console.log('hola');
       }
-   } catch (error) {
+      catch (error) {
       console.log(error);
+      }
    }
 }
 
 
 export const getDogByName = (name) => {
-   try {
-      return async (dispatch) => {
+   return async (dispatch) => {
+      try {
          const {data} = await axios.get(`http://localhost:3001/dogs?name=${name}`)
-         return dispatch({type: 'GET_BY_NAME', payload: data})
+         return dispatch({
+            type: 'GET_BY_NAME', 
+            payload: data
+         })
       }
-   } catch (error) {
-      console.log(error);
+   catch (error) {
+      alert(`There isn't such breed`)
+      }
    }
 }
 export const removeFinder =() => {

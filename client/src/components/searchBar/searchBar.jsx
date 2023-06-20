@@ -12,8 +12,8 @@ const SearchBar = () => {
    }
   
    const onSearch = (name) => {
-      console.log('hola', name);
       dispatch(getDogByName(name));
+      setName("")
    }
 
    const handleRemove = () => {

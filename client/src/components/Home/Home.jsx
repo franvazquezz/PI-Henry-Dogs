@@ -39,16 +39,16 @@ const Home = () =>{
       <h1>Home God</h1>
       <div> 
          <div className={style.filter}>
-         <h2>Filter & Order</h2>
+         <h2 className={style.h2}>Filter & Order</h2>
          <h3>Filter by: </h3>
          <h4>Origin </h4>
-         <select name="origin" id="" onChange={handleFilterOrigin}>
+         <select className={style.select} name="origin" id="" onChange={handleFilterOrigin}>
             <option value="Any">Any</option>
-            <option value="Api">Api</option>
+            <option value="Api">Default</option>
             <option value="DataBase">Created</option>
          </select>
          <h4>Temperament</h4>
-         <select onChange={handleFilter}>
+         <select className={style.select} onChange={handleFilter}>
             <option value="Any">Any</option>
          {allTemperaments.map((item, index)=> {
             return (
@@ -59,13 +59,13 @@ const Home = () =>{
          <hr/>
          <h3>Order by: </h3>
          <h4>Name</h4>
-         <select onChange={handleOrderName}>
-            <option value="A" hidden>Order</option>
+         <select className={style.select} onChange={handleOrderName}>
+            <option className={style.option}value="A" hidden>Order</option>
             <option value="A">Ascending order</option>
             <option value="desc">Descending order</option>
          </select>
          <h4>Weight</h4>
-         <select onChange={handleOrderWeight}> 
+         <select className={style.select} onChange={handleOrderWeight}> 
             <option value="all" hidden>Order</option>
             <option value="A">Lightest to heaviest</option>
             <option value="high">Heaviest to lightest</option>
