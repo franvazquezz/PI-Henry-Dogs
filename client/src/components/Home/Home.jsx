@@ -26,7 +26,7 @@ const Home = () =>{
    }
    const handleOrderWeight = (event)=>{
       dispatch(orderCardsWeight(event.target.value));
-      setAux(!aux)
+      setAux(!aux);
    }
    const handleFilter = (event)=>{
       dispatch(filterCards(event.target.value));

@@ -84,8 +84,9 @@ const reducer = (state = initialState, action) => {
             const allDogsOrderedName = [...state.allDogs]
             return {
                  ...state, allDogs: action.payload === "A" ? 
-                 allDogsOrderedName.sort((a, b) => a.id- b.id) :  
-                 allDogsOrderedName.sort((a, b) => b.id - a.id)
+                allDogsOrderedName.sort((a, b) => {return a.name > b.name ? 1 : a.name < b.name ? -1: 0}) : 
+                allDogsOrderedName.sort((a, b) => {return a.name < b.name ? 1 : a.name > b.name ? -1: 0})
+                 
                 }
         case 'ORDER_BY_WEIGHT':
             const allDogsOrderedWeight = [...state.allDogs]

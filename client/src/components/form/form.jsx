@@ -117,7 +117,7 @@ const Form = () =>{
                     {errors.life_span && (<p>{errors.life_span}</p>)}
                 </div>
                 <div className={style.izq}>
-                    <h4>Choose an image</h4>
+                    <h4>Choose an image or paste an url</h4>
                     <img className={style.random}src="https://img.freepik.com/premium-vector/simple-minimalist-cartoon-cute-dog-logo_68410-146.jpg" alt=''/>
                     <img className={style.random}src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRb4hZmwHc1nwzFI0ordY93atFok5Ls8n6glA" alt=""/>
                     <img className={style.random}src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoSMS0h2LRWJ_xR6ik3sQ-pS7DwnMVizCbyw" alt=""/>
@@ -129,6 +129,8 @@ const Form = () =>{
                     <input name="img" type="radio" value={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoSMS0h2LRWJ_xR6ik3sQ-pS7DwnMVizCbyw"} onChange={e => handleChange(e)}/>
                     <input name="img" type="radio" value={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSavCkgCVj2kOFj2vb0sUY5S_bW5MLAK-MiJXNF2dOZK9vL7twl8ECe0FyUkukiBuOZyGI"} onChange={e => handleChange(e)}/>
                 </div>
+                <label htmlFor="img"> Url: </label>
+                    <input className={style.input} name="img" onChange={e => handleChange(e)}></input>
                 <div className={style.izq}>
                     <h4>Temperaments:</h4>
                     <label htmlFor="temperaments"></label>

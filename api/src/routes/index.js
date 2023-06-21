@@ -4,7 +4,7 @@
 const router = require('express').Router();
 const {getAllDogs, getById} = require('../controllers/getDogs');
 const { postDogs } = require('../controllers/postDogs');
-const {getTemperaments} = require('../controllers/getTemperaments')
+const {getTemperaments} = require('../controllers/getTemperaments');
 // const router = Router();
 
 // Configurar los routers

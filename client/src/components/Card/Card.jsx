@@ -17,9 +17,13 @@ const Card = ({id, name, height_min, height_max, weight_min, weight_max, img, li
    return (
       <div className={style.contenedor}>
         <div className={style.contenedor__content}> 
+         {
+         (id !== 333 ) ? 
          <Link to={`/dogs/${id}`}>
             <img className={style.imagen} src={img} alt='' />
-         </Link>
+         </Link> :
+            <img className={style.imagen} src={img} alt='' />
+         }
          <h1 className={style.name}>{`${name[0].toUpperCase()}${name.substring(1)}`}</h1>
          <h3 className={style.status}>Weight: {showWeight()}</h3>
          <h3 className={style.status}>Temperaments:<p>{typeof id === 'string' ? temperaments.map(e=> ` ${e.name}`).toString():temperaments? temperaments : 'No data available'}</p></h3>
