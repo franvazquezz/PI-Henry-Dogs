@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import style from './SearchBar.module.css';
+import style from './searchBar.module.css';
 import { useState } from 'react';
 import { getDogByName, removeFinder } from '../../redux/actions'
 

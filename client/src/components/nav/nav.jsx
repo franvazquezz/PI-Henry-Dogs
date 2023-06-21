@@ -1,5 +1,5 @@
 import SearchBar from "../searchBar/searchBar.jsx";
-import style from "./Nav.module.css"
+import style from "./nav.module.css"
 import {Link, NavLink} from 'react-router-dom'
 import creative from '../../../assets/creative.png'
 
