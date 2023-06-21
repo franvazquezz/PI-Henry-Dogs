@@ -31,7 +31,7 @@ const getDb = async () => {
         }
     })
 }
-//y las concatenamos
+//y las concatenamos en un array de objetos
 const getAll = async () => {
     const apiInfo = await getApi()
     const dbInfo = await getDb()

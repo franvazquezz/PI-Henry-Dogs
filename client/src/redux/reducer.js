@@ -22,7 +22,8 @@ const reducer = (state = initialState, action) => {
         case 'POST_DOGS':
             return {
                 ...state,
-                allDogs: [...allDogs, action.payload]
+                allDogs: [...state.allDogs, action.payload],
+                allDogsFiltered: [...state.allDogsFiltered, action.payload]
             }
         case 'GET_BY_NAME':
             return {

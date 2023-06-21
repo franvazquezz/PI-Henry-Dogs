@@ -40,7 +40,7 @@ const About = () => {
                weight_max = {22}
                life_span = {15}
                img = {luna}
-               temperaments = {'Calm, Cautious, Protective, Lovely'}
+               temperaments = {['Calm, Cautious, Protective, Lovely']}
             />
             <Card className={style.card}
                id = {333}

@@ -8,9 +8,9 @@ import Pagination from '../Pagination/pagination';
 
 
 const Home = () =>{
-   const [aux, setAux] = useState(false);
    const dispatch = useDispatch();
    const {allTemperaments, allDogs, dogFinder} = useSelector(state => state);
+   //paginado
    const [currentPage, setCurrentPage] = useState(1);
    const [postsPage, setPostsPage] = useState(8);
    const lastPostIndex = currentPage * postsPage;
@@ -20,6 +20,8 @@ const Home = () =>{
       currentPosts = allDogs.slice(firstPostIndex, lastPostIndex);
       setCurrentPage(1);
    }, [allDogs])
+   //orden
+   const [aux, setAux] = useState(false);//re-renderiza
    const handleOrderName = (event)=>{
       dispatch(orderCardsName(event.target.value));
       setAux(!aux);
@@ -28,6 +30,7 @@ const Home = () =>{
       dispatch(orderCardsWeight(event.target.value));
       setAux(!aux);
    }
+   //filtros
    const handleFilter = (event)=>{
       dispatch(filterCards(event.target.value));
    }

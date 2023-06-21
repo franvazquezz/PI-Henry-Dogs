@@ -21,12 +21,17 @@ const Detail = () =>{
                 <button className={style.back} onClick={handleRemove}>Back</button>
                 </Link>
                 <br></br>
-                <img className={style.img}src={details[0]?.img && details[0]?.img}/>
-                <h1 className={style.name}> {details[0]?.name && `${details[0]?.name[0].toUpperCase()}${details[0]?.name.substring(1)}`}</h1>
-                <h3 className={style.status}> Life span: {details[0]?.createdInDb ? `${details[0]?.life_span} years`: details[0]?.life_span ? details[0]?.life_span : 'No data available'}</h3>
-                <h3 className={style.status}> Weight: {details[0]?.weight_min && (details[0]?.weight_min)} - {details[0]?.weight_max && details[0]?.weight_max} kg</h3>
-                <h3 className={style.status}> Height: {details[0]?.height_min && details[0]?.height_min} - {details[0]?.height_max && details[0]?.height_max} cm</h3>
-                <h3 className={style.status}> Temperaments: {details[0]?.createdInDb ? details[0]?.temperaments && details[0]?.temperaments.map(ele =>` ${ele.name}`).toString(): details[0]?.temperaments && details[0]?.temperaments}</h3>
+                {details.map(dog => {
+                    return( <div>
+                    <img className={style.img}src={dog.img }/>
+                    <h1 className={style.name}> {dog.name}</h1>
+                    <h3 className={style.status}> Life span: {dog.createdInDb ? `${dog.life_span} years`: dog.life_span ? dog.life_span : 'No data available'}</h3>
+                    <h3 className={style.status}> Weight: {dog.weight_min && (dog.weight_min)} - {dog.weight_max && dog.weight_max} kg</h3>
+                    <h3 className={style.status}> Height: {dog.height_min && dog.height_min} - {dog.height_max && dog.height_max} cm</h3>
+                    <h3 className={style.status}> Temperaments: {dog.createdInDb ? dog.temperaments && dog.temperaments.map(ele =>` ${ele.name}`).toString(): dog.temperaments && dog.temperaments}</h3>
+                    </div>
+                    )
+                })}
                 <Link to={`/dogs`}>
                 <button className={style.back}>Back</button>
                 </Link>
