@@ -59,10 +59,12 @@ export const postDogs = (userData) => {
    try {
       return async (dispatch)=>{
          const {data} = await axios.post('http://localhost:3001/dogs', userData);
+         console.log(data);
+         alert(data);
          return dispatch({type: 'POST_DOGS', payload: data})
       }
    } catch (error) {
-      console.log(error);
+      alert(error.response.data)
    }
 }
 export const removeDetails = () => {

@@ -82,7 +82,7 @@ const Form = () =>{
             img: '',
             createdInDb: true,
         })
-        alert(`The new breed ${userData.name} has been created successfully`);
+        // alert(`The new breed ${userData.name} has been created successfully`);
     }
     return (
         <div className={style.todo}>
